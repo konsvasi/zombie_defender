@@ -23,3 +23,6 @@ func _physics_process(delta):
 		$Sprite.play("idle")
 	
 	move_and_slide(motion)
+
+
+
