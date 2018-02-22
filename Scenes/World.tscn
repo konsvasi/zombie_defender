@@ -74,7 +74,6 @@ __meta__ = {
 
 [node name="stairsToBasement" parent="." index="4" instance=ExtResource( 5 )]
 
-editor/display_folded = true
 position = Vector2( 366.26, 175.42 )
 
 [node name="Area2D" parent="stairsToBasement" index="0"]
@@ -88,7 +87,6 @@ curve = SubResource( 1 )
 [node name="spawnLocation" type="PathFollow2D" parent="EnemyPath" index="0"]
 
 position = Vector2( 162.002, 449.326 )
-rotation = -1.55468e-05
 offset = 0.0
 h_offset = 0.0
 v_offset = 0.0

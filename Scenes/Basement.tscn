@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Tilesets/worldTileSet.tres" type="TileSet" id=1]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
 
 [node name="Basement" type="Node2D"]
 
@@ -45,5 +46,9 @@ occluder_light_mask = 1
 format = 1
 tile_data = PoolIntArray( 196633, 62, 0, 262156, 65, 0, 589843, 30, 0, 589845, 30, 0, 589847, 30, 0, 655379, 109, 0, 655381, 109, 0, 655383, 109, 0 )
 _sections_unfolded = [ "Cell" ]
+
+[node name="Player" parent="." index="2" instance=ExtResource( 2 )]
+
+position = Vector2( 793.197, 109.279 )
 
 
