@@ -3,6 +3,8 @@ extends Node
 var current_scene = null
 
 var health = 50
+var score = 0
+var UI
 
 func _ready():
 	var root = get_tree().get_root()

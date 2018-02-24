@@ -1,8 +1,6 @@
 extends KinematicBody2D
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+signal gotHit
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -11,3 +9,6 @@ func _ready():
 
 func _process(delta):
 	pass
+	
+func died():
+	$AnimatedSprite.play("dead")

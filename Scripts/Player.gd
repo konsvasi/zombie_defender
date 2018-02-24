@@ -6,7 +6,7 @@ var health = 50
 var motion2 
 
 onready var shootTimer = $ShootTimer
-
+signal hitEnemy
 const PARTICLE_SCENE = preload("res://Scenes/Particle.tscn")
 
 func _physics_process(delta):
@@ -42,6 +42,7 @@ func createParticle(motion):
 		particle.motion = motion
 		get_parent().add_child(particle)
 		particle.set_position($Gun/Position2D.get_global_position())
+		
 		restartTimer()
 
 func restartTimer():
@@ -50,5 +51,4 @@ func restartTimer():
 
 
 func _on_ShootTimer_timeout():
-	print("timer")
 	shootTimer.stop()

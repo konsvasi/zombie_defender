@@ -2,6 +2,9 @@ extends CanvasLayer
 
 signal start_game
 
+func _ready():
+	global.UI = self
+
 func updateScore(score):
 	$ScoreLabel/Score.text = str(score)
 
@@ -26,3 +29,8 @@ func toggleScoreAndHealthLabels(show):
 	else:
 		$ScoreLabel.hide()
 		$HealthLabel.hide()
+
+
+func _on_Player_hitEnemy():
+	print("UI UPDATE")
+	updateScore(global.score)

@@ -15,3 +15,14 @@ func _on_VisibilityNotifier2D_screen_exited():
 	print("Exited screen")
 	queue_free()
 
+
+
+func _on_Area2D_body_entered( body ):
+	if (body.has_node("Enemy")):
+		print("hit enemy")
+		global.score += 1
+		#body.queue_free()
+		body.died()
+		global.UI.updateScore(global.score)
+		queue_free()
+		
