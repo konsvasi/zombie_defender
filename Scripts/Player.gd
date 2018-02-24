@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 const ACCELERATION = 60
 const SPEED = 55
+var health = 50
 
 
 
