@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/World.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Tilesets/worldTileSet.tres" type="TileSet" id=3]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Portal.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/UI.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Curve2D" id=1]
 
@@ -100,9 +101,23 @@ lookahead = 4.0
 process_mode = 1
 wait_time = 1.0
 one_shot = false
-autostart = true
+autostart = false
+
+[node name="UI" parent="." index="7" instance=ExtResource( 6 )]
+
+editor/display_folded = true
+
+[node name="ScoreTimer" type="Timer" parent="." index="8"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
 
 [connection signal="timeout" from="enemyTimer" to="." method="_on_enemyTimer_timeout"]
 
+[connection signal="start_game" from="UI" to="." method="_on_UI_start_game"]
+
 
 [editable path="stairsToBasement"]
+[editable path="UI"]
