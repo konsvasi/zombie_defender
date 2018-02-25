@@ -10,8 +10,7 @@ func _ready():
 
 func _process(delta):
 	if global.health <= 0:
-		pass
-		#gameOver()
+		gameOver()
 
 func _on_enemyTimer_timeout():
 	$EnemyPath/spawnLocation.set_offset(randi())
