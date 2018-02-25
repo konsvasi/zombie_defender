@@ -2,13 +2,23 @@ extends KinematicBody2D
 
 signal gotHit
 
-func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
-	pass
+#Damage inflicted by enemy
+const DAMAGE = 3
 
 func _process(delta):
 	pass
 	
 func died():
 	$AnimatedSprite.play("dead")
+	
+	#Wait for a second before removing node from scene
+	#TODO: fade out animation instead of instantly deleting enemy
+	$Fade_Timer.start()
+	yield($Fade_Timer, "timeout")
+	queue_free()
+
+
+func _on_Area2D_body_entered( body ):
+	if body.get_name() == "Player":
+		global.Player.getDamage(DAMAGE)
+		

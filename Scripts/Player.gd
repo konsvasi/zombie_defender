@@ -3,11 +3,15 @@ extends KinematicBody2D
 const ACCELERATION = 60
 const SPEED = 55
 var health = 50
+var maxHealth = 50
 var motion2 
 
 onready var shootTimer = $ShootTimer
 signal hitEnemy
 const PARTICLE_SCENE = preload("res://Scenes/Particle.tscn")
+
+func _ready():
+	global.Player = self
 
 func _physics_process(delta):
 	var motion = Vector2()
@@ -29,7 +33,6 @@ func _physics_process(delta):
 		motion = motion.normalized() * SPEED
 	else:
 		$Sprite.play("idle")
-	motion2 = motion
 	move_and_slide(motion)
 
 func shoot(motion):
@@ -52,3 +55,9 @@ func restartTimer():
 
 func _on_ShootTimer_timeout():
 	shootTimer.stop()
+	
+#Function that handles the damage that user takes from an enemy
+func getDamage(damage):
+	global.health -= damage
+	global.UI.updateHealth(global.health)
+	
