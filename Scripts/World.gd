@@ -46,7 +46,6 @@ func gameOver():
 	remove_enemies(enemies)
 	$UI.showGameOver()
 
-#Removes all enemies from the screen
 func remove_enemies(enemies):
 	for enemy in enemies:
 		enemy.queue_free()

@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Tilesets/worldTileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/UI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Portal.tscn" type="PackedScene" id=4]
 
-[node name="Basement" type="Node2D"]
+[node name="Basement" type="Node2D" index="0"]
 
 [node name="TileMap_BACK" type="TileMap" parent="." index="0"]
 
@@ -50,21 +51,24 @@ _sections_unfolded = [ "Cell" ]
 
 [node name="Player" parent="." index="2" instance=ExtResource( 2 )]
 
-position = Vector2( 793.197, 109.279 )
+position = Vector2( 784.815, 108.68 )
 
 [node name="UI" parent="." index="3" instance=ExtResource( 3 )]
 
-[node name="StartButton" parent="UI" index="0"]
+editor/display_folded = true
+
+[node name="StartButton" parent="UI" index="1"]
 
 visible = false
 
-[node name="HealthLabel" parent="UI" index="1"]
+[node name="Portal" parent="." index="4" instance=ExtResource( 4 )]
 
-visible = true
+position = Vector2( 819.947, 114.548 )
 
-[node name="ScoreLabel" parent="UI" index="2"]
+[node name="Area2D" parent="Portal" index="0"]
 
-visible = true
+nextScene = "res://Scenes/World.tscn"
 
 
 [editable path="UI"]
+[editable path="Portal"]

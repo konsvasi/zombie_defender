@@ -35,7 +35,6 @@ func toggleScoreAndHealthLabels(show):
 		$HealthLabel.hide()
 
 func _on_Player_hitEnemy():
-	print("UI UPDATE")
 	updateScore(global.score)
 
 func setupHealthbar():
