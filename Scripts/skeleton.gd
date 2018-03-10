@@ -5,6 +5,9 @@ signal gotHit
 #Damage inflicted by enemy
 const DAMAGE = 3
 
+func _ready():
+	self.add_to_group("enemy_group")
+
 func _process(delta):
 	pass
 	

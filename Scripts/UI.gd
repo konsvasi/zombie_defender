@@ -13,14 +13,15 @@ func updateHealth(health):
 	
 func showGameOver():
 	toggleScoreAndHealthLabels(false)
-	$MessageLabel.text = "You Died"
-	$MessageLabel.show()
+	$GameOverMessage.text = "You Died"
+	$GameOverMessage.show()
 	$StartButton.show()
 
 
 func _on_StartButton_pressed():
-	print("starting a new game")
-	print($StartButton.get_instance_id())
+	if $GameOverMessage.is_visible_in_tree():
+		$GameOverMessage.hide()
+
 	$StartButton.hide()
 	toggleScoreAndHealthLabels(true)
 	emit_signal("start_game")

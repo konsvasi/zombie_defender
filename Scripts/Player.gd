@@ -8,7 +8,14 @@ var motion2
 
 onready var shootTimer = $ShootTimer
 signal hitEnemy
+signal gameOver
 const PARTICLE_SCENE = preload("res://Scenes/Particle.tscn")
+
+
+func _process(delta):
+	if global.health <= 0:
+		resetPlayerStats()
+		emit_signal("gameOver")
 
 func _ready():
 	global.Player = self
@@ -61,3 +68,10 @@ func getDamage(damage):
 	global.health -= damage
 	global.UI.updateHealth(global.health)
 	
+#Resets the player stats after a game over
+func resetPlayerStats():
+	global.health = health
+
+#Resets position of the player after a game over
+func resetPosition(startPosition):
+	set_global_position(startPosition)

@@ -4,13 +4,11 @@ export (PackedScene) var enemies
 var score
 var enemyCount = 0
 onready var health = $Player.health
+onready var tree = get_tree()
 
 func _ready():
+	tree.paused = true
 	randomize()
-
-func _process(delta):
-	if global.health <= 0:
-		gameOver()
 
 func _on_enemyTimer_timeout():
 	$EnemyPath/spawnLocation.set_offset(randi())
@@ -34,9 +32,29 @@ func newGame():
 	$UI.updateHealth(health)
 
 func gameOver():
+	tree.paused = true
+	#reset score
+	global.score = 0
+	
+	#move Player to start position
+	$Player.resetPosition($StartPosition.get_position())
+	
+	#Stop creation of new enemies
+	$enemyTimer.stop()
+	
+	var enemies = tree.get_nodes_in_group("enemy_group")
+	remove_enemies(enemies)
 	$UI.showGameOver()
 
+#Removes all enemies from the screen
+func remove_enemies(enemies):
+	for enemy in enemies:
+		enemy.queue_free()
 
 func _on_UI_start_game():
-	print("received signal")
+	tree.paused = false
 	newGame()
+
+
+func _on_Player_gameOver():
+	gameOver()

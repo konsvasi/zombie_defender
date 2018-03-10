@@ -2,7 +2,7 @@ extends Node
 
 var current_scene = null
 
-var health = 50
+var health = 10
 var score = 0
 var UI
 var Player

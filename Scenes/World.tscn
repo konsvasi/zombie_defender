@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Scenes/World.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/World.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Tilesets/worldTileSet.tres" type="TileSet" id=3]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
@@ -14,9 +14,10 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 162.002, 449.326, 0, 0, 0, 0, 638.004, 449.326, 0, 0, 0, 0, 639.011, 571.326 )
 }
 
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
+_sections_unfolded = [ "Pause" ]
 enemies = ExtResource( 2 )
 
 [node name="TileMap_BACK" type="TileMap" parent="." index="0"]
@@ -72,6 +73,7 @@ __meta__ = {
 [node name="Player" parent="." index="2" instance=ExtResource( 4 )]
 
 position = Vector2( 444.515, 286.617 )
+_sections_unfolded = [ "Collision", "Pause", "Transform" ]
 
 [node name="stairsToBasement" parent="." index="3" instance=ExtResource( 5 )]
 
@@ -84,7 +86,6 @@ nextScene = "res://Scenes/Basement.tscn"
 
 [node name="EnemyPath" type="Path2D" parent="." index="4"]
 
-editor/display_folded = true
 curve = SubResource( 1 )
 
 [node name="spawnLocation" type="PathFollow2D" parent="EnemyPath" index="0"]
@@ -107,14 +108,18 @@ autostart = false
 
 [node name="UI" parent="." index="6" instance=ExtResource( 6 )]
 
-editor/display_folded = true
-
 [node name="ScoreTimer" type="Timer" parent="." index="7"]
 
 process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = false
+
+[node name="StartPosition" type="Position2D" parent="." index="8"]
+
+position = Vector2( 520.034, 158.271 )
+
+[connection signal="gameOver" from="Player" to="." method="_on_Player_gameOver"]
 
 [connection signal="hitEnemy" from="Player" to="UI" method="_on_Player_hitEnemy"]
 

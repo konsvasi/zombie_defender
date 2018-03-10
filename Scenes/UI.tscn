@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Scenes/UI.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/UI.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/orange kid.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Images/health_bar_under.png" type="Texture" id=3]
 [ext_resource path="res://Images/blood_drop.png" type="Texture" id=4]
@@ -29,7 +29,7 @@ use_filter = false
 font_data = ExtResource( 2 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=4]
 
 size = 48
 use_mipmaps = false
@@ -37,7 +37,7 @@ use_filter = true
 font_data = ExtResource( 2 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=5]
 
 size = 48
 use_mipmaps = true
@@ -54,7 +54,7 @@ scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 1 )
 
-[node name="MessageLabel" type="Label" parent="." index="0"]
+[node name="GameOverMessage" type="Label" parent="." index="0"]
 
 visible = false
 anchor_left = 0.0
@@ -66,6 +66,7 @@ margin_top = 224.0
 margin_right = 576.0
 margin_bottom = 306.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -82,6 +83,7 @@ _sections_unfolded = [ "custom_colors" ]
 
 [node name="StartButton" type="Button" parent="." index="1"]
 
+pause_mode = 2
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -91,6 +93,7 @@ margin_top = -244.0
 margin_right = 71.0
 margin_bottom = -118.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
@@ -104,7 +107,7 @@ group = null
 text = "Start"
 flat = false
 align = 1
-_sections_unfolded = [ "custom_fonts" ]
+_sections_unfolded = [ "Pause", "custom_fonts" ]
 
 [node name="HealthLabel" type="Label" parent="." index="2"]
 
@@ -115,14 +118,16 @@ anchor_bottom = 0.0
 margin_left = -512.0
 margin_top = 64.0
 margin_right = -375.0
-margin_bottom = 142.0
+margin_bottom = 122.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 3 )
 text = "Health:"
+valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
@@ -134,10 +139,12 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 128.0
-margin_right = 480.0
-margin_bottom = 64.0
+margin_left = 121.0
+margin_top = 17.0
+margin_right = 217.0
+margin_bottom = 49.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -166,11 +173,12 @@ anchor_bottom = 0.0
 margin_right = 92.0
 margin_bottom = 58.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "Score:"
 percent_visible = 1.0
 lines_skipped = 0
@@ -188,11 +196,12 @@ margin_top = 1.0
 margin_right = 143.0
 margin_bottom = 59.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 5 )
 text = "0"
 align = 2
 autowrap = true
