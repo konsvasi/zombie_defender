@@ -5,7 +5,7 @@
 [ext_resource path="res://Scenes/UI.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Portal.tscn" type="PackedScene" id=4]
 
-[node name="Basement" type="Node2D" index="0"]
+[node name="Basement" type="Node2D"]
 
 [node name="TileMap_BACK" type="TileMap" parent="." index="0"]
 

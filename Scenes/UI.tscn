@@ -45,7 +45,7 @@ use_filter = false
 font_data = ExtResource( 2 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="UI" type="CanvasLayer"]
+[node name="UI" type="CanvasLayer" index="0"]
 
 layer = 1
 offset = Vector2( 0, 0 )
@@ -111,13 +111,12 @@ _sections_unfolded = [ "Pause", "custom_fonts" ]
 
 [node name="HealthLabel" type="Label" parent="." index="2"]
 
-anchor_left = 0.5
+anchor_left = 0.0
 anchor_top = 0.0
-anchor_right = 0.5
+anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -512.0
 margin_top = 64.0
-margin_right = -375.0
+margin_right = 137.0
 margin_bottom = 122.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -131,7 +130,7 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
+_sections_unfolded = [ "Anchor", "custom_fonts" ]
 
 [node name="Healthbar" type="TextureProgress" parent="HealthLabel" index="0"]
 
@@ -183,7 +182,7 @@ text = "Score:"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
+_sections_unfolded = [ "Anchor", "custom_fonts" ]
 
 [node name="Score" type="Label" parent="ScoreLabel" index="0"]
 

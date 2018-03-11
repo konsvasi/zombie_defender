@@ -1,6 +1,5 @@
 extends KinematicBody2D
 
-const ACCELERATION = 60
 const SPEED = 80
 const DOWN = Vector2(0, 1)
 const UP = Vector2(0, -1)
