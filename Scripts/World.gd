@@ -7,8 +7,9 @@ onready var health = $Player.health
 onready var tree = get_tree()
 
 func _ready():
-	tree.paused = true
 	randomize()
+	tree.paused = false
+	newGame()
 
 func _on_enemyTimer_timeout():
 	$EnemyPath/spawnLocation.set_offset(randi())
@@ -37,7 +38,7 @@ func gameOver():
 	global.score = 0
 	
 	#move Player to start position
-	$Player.resetPosition($StartPosition.get_position())
+	#$Player.resetPosition($StartPosition.get_position())
 	
 	#Stop creation of new enemies
 	$enemyTimer.stop()
@@ -49,11 +50,6 @@ func gameOver():
 func remove_enemies(enemies):
 	for enemy in enemies:
 		enemy.queue_free()
-
-func _on_UI_start_game():
-	tree.paused = false
-	newGame()
-
 
 func _on_Player_gameOver():
 	gameOver()

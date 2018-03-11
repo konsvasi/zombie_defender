@@ -15,16 +15,9 @@ func showGameOver():
 	toggleScoreAndHealthLabels(false)
 	$GameOverMessage.text = "You Died"
 	$GameOverMessage.show()
-	$StartButton.show()
-
-
-func _on_StartButton_pressed():
-	if $GameOverMessage.is_visible_in_tree():
-		$GameOverMessage.hide()
-
-	$StartButton.hide()
-	toggleScoreAndHealthLabels(true)
-	emit_signal("start_game")
+	# Wait 5 seconds, then resume execution
+	yield(get_tree().create_timer(3.0), "timeout")
+	global.goto_scene(global.titleScene)
 
 func toggleScoreAndHealthLabels(show):
 	if show:

@@ -1,7 +1,8 @@
 extends Node
 
-var current_scene = null
+const titleScene = "res://Scenes/TitleScreen.tscn"
 
+var current_scene = null
 var health = 10
 var score = 0
 var UI
