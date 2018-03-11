@@ -1,15 +1,28 @@
 extends Node2D
 
 export (PackedScene) var enemies
-var score
-var enemyCount = 0
 onready var health = $Player.health
 onready var tree = get_tree()
+
+var score
+var enemyCount = 0
+var isNewGame = true
+
 
 func _ready():
 	randomize()
 	tree.paused = false
-	newGame()
+	
+	if global.isNewGame:
+		newGame()
+	else:
+		global.updateUI()
+		$enemyTimer.start()
+	
+	# Positioning of player after switching scenes
+	if global.previous_scene:
+		if global.previous_scene == "Basement":
+			global.Player.set_position($StartPosition.get_position())
 
 func _on_enemyTimer_timeout():
 	$EnemyPath/spawnLocation.set_offset(randi())
@@ -31,15 +44,14 @@ func newGame():
 	$enemyTimer.start()
 	$UI.updateScore(global.score)
 	$UI.updateHealth(health)
+	global.isNewGame = false
 
 func gameOver():
 	tree.paused = true
 	#reset score
 	global.score = 0
-	
-	#move Player to start position
-	#$Player.resetPosition($StartPosition.get_position())
-	
+	global.isNewGame = true
+		
 	#Stop creation of new enemies
 	$enemyTimer.stop()
 	

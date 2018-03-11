@@ -14,7 +14,7 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 162.002, 449.326, 0, 0, 0, 0, 638.004, 449.326, 0, 0, 0, 0, 639.011, 571.326 )
 }
 
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
@@ -109,6 +109,8 @@ autostart = false
 
 [node name="UI" parent="." index="6" instance=ExtResource( 6 )]
 
+editor/display_folded = true
+
 [node name="ScoreTimer" type="Timer" parent="." index="7"]
 
 process_mode = 1
@@ -118,7 +120,7 @@ autostart = false
 
 [node name="StartPosition" type="Position2D" parent="." index="8"]
 
-position = Vector2( 520.034, 158.271 )
+position = Vector2( 402.38, 174.944 )
 
 [connection signal="gameOver" from="Player" to="." method="_on_Player_gameOver"]
 

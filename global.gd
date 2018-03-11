@@ -3,10 +3,12 @@ extends Node
 const titleScene = "res://Scenes/TitleScreen.tscn"
 
 var current_scene = null
+var previous_scene = null
 var health = 10
 var score = 0
 var UI
 var Player
+var isNewGame = true
 
 func _ready():
 	var root = get_tree().get_root()
@@ -24,3 +26,8 @@ func _deferred_goto_scene(path):
 	
 	get_tree().get_root().add_child(current_scene)
 	get_tree().set_current_scene(current_scene)
+	
+# Updates the UI after entering a new scene
+func updateUI():
+	UI.updateScore(global.score)
+	UI.updateHealth(global.health)

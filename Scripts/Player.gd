@@ -5,14 +5,14 @@ const DOWN = Vector2(0, 1)
 const UP = Vector2(0, -1)
 const LEFT = Vector2(-1, 0)
 const RIGHT = Vector2(1, 0)
+const PARTICLE_SCENE = preload("res://Scenes/Particle.tscn")
 
 var health = 50
 var maxHealth = 50
-
+var currentScene
 onready var shootTimer = $ShootTimer
 signal hitEnemy
 signal gameOver
-const PARTICLE_SCENE = preload("res://Scenes/Particle.tscn")
 
 
 func _process(delta):
