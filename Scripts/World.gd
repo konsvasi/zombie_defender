@@ -32,8 +32,8 @@ func _on_enemyTimer_timeout():
 	enemy.get_node("AnimatedSprite").play("walk_down")
 	
 	enemyCount += 1
-	#if enemyCount >= 10:
-	#	$enemyTimer.stop()
+	if enemyCount == 1:
+		$enemyTimer.stop()
 		
 	
 	enemy.position = $EnemyPath/spawnLocation.position

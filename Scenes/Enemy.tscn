@@ -5,12 +5,12 @@
 [ext_resource path="res://Tilesets/monster_animations/monster_walk_up_1.png" type="Texture" id=3]
 [ext_resource path="res://Tilesets/monster_animations/monster_walk_up_2.png" type="Texture" id=4]
 [ext_resource path="res://Tilesets/monster_animations/monster_walk_up_3.png" type="Texture" id=5]
-[ext_resource path="res://Tilesets/monster_animations/monster_walk_down_2.png" type="Texture" id=6]
-[ext_resource path="res://Tilesets/monster_animations/monster_walk_down_3.png" type="Texture" id=7]
-[ext_resource path="res://Tilesets/monster_animations/dead_zombie.png" type="Texture" id=8]
-[ext_resource path="res://Tilesets/monster_animations/monster_walk_right_1.png" type="Texture" id=9]
-[ext_resource path="res://Tilesets/monster_animations/monster_walk_right_2.png" type="Texture" id=10]
-[ext_resource path="res://Tilesets/monster_animations/monster_walk_right_3.png" type="Texture" id=11]
+[ext_resource path="res://Tilesets/monster_animations/dead_zombie.png" type="Texture" id=6]
+[ext_resource path="res://Tilesets/monster_animations/monster_walk_right_1.png" type="Texture" id=7]
+[ext_resource path="res://Tilesets/monster_animations/monster_walk_right_2.png" type="Texture" id=8]
+[ext_resource path="res://Tilesets/monster_animations/monster_walk_right_3.png" type="Texture" id=9]
+[ext_resource path="res://Tilesets/monster_animations/monster_walk_down_2.png" type="Texture" id=10]
+[ext_resource path="res://Tilesets/monster_animations/monster_walk_down_3.png" type="Texture" id=11]
 [ext_resource path="res://Tilesets/monster_animations/monster_walk_left_1.png" type="Texture" id=12]
 [ext_resource path="res://Tilesets/monster_animations/monster_walk_left_2.png" type="Texture" id=13]
 [ext_resource path="res://Tilesets/monster_animations/monster_walk_left_3.png" type="Texture" id=14]
@@ -28,19 +28,19 @@ animations = [ {
 "name": "walk_up",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "walk_down",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 8 ) ],
+"frames": [ ExtResource( 6 ) ],
 "loop": true,
 "name": "dead",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 11 ) ],
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 9 ) ],
 "loop": true,
 "name": "walk_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 10 ), ExtResource( 2 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "walk_down",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 12 ), ExtResource( 14 ) ],
@@ -60,7 +60,7 @@ height = 1.99615
 custom_solver_bias = 0.0
 radius = 14.4911
 
-[node name="skeleton" type="KinematicBody2D" groups=[
+[node name="skeleton" type="KinematicBody2D" index="0" groups=[
 "enemy_group",
 ]]
 
