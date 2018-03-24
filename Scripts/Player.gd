@@ -60,6 +60,9 @@ func _physics_process(delta):
 			$Sprite.play("walk_down")
 		else:
 			$Sprite.play(animation)
+	
+	if Input.is_action_pressed("interact"):
+		print("Interact")
 
 
 	if Input.is_action_pressed("shoot"):
