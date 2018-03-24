@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/World.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Portal.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/UI.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Box.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Curve2D" id=1]
 
@@ -64,7 +65,7 @@ collision_layer = 1
 collision_mask = 1
 occluder_light_mask = 1
 format = 1
-tile_data = PoolIntArray( 65556, 30, 0, 131086, 24, 0, 131087, 24, 0, 131089, 63, 0, 131092, 109, 0, 196628, 28, 0, 262161, 64, 0, 524303, 67, 0 )
+tile_data = PoolIntArray( 65556, 30, 0, 131089, 63, 0, 131092, 109, 0, 196628, 28, 0, 262161, 64, 0, 524303, 67, 0 )
 _sections_unfolded = [ "Cell", "Collision", "Z Index" ]
 __meta__ = {
 "_edit_lock_": true
@@ -72,8 +73,8 @@ __meta__ = {
 
 [node name="Player" parent="." index="2" instance=ExtResource( 4 )]
 
-position = Vector2( 444.515, 286.617 )
-_sections_unfolded = [ "Collision", "Pause", "Transform" ]
+position = Vector2( 384, 128 )
+_sections_unfolded = [ "Collision", "Pause", "Transform", "collision" ]
 
 [node name="stairsToBasement" parent="." index="3" instance=ExtResource( 5 )]
 
@@ -121,6 +122,12 @@ autostart = false
 [node name="StartPosition" type="Position2D" parent="." index="8"]
 
 position = Vector2( 402.38, 174.944 )
+
+[node name="Box" parent="." index="9" instance=ExtResource( 7 )]
+
+position = Vector2( 384, 64 )
+item = "Super boots"
+looted = false
 
 [connection signal="gameOver" from="Player" to="." method="_on_Player_gameOver"]
 
