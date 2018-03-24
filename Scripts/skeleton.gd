@@ -45,7 +45,7 @@ func walk(delta):
 		pursuing = true
 	else:
 		pursuing = false
-		
+	
 	var motion = (playerPos - enemyPos).normalized()
 	walk_animation(motion)
 	previousMotion = motion
@@ -54,31 +54,19 @@ func walk(delta):
 		
 
 func walk_animation(motion):
-	#print(motion.x < previousMotion.x)
-	var newMotion = (motion - previousMotion).normalized()
-	var rateX = motion.x - previousMotion.x
-	var rateY = motion.y - previousMotion.y
+	var angle = -rad2deg(global.Player.position.angle_to_point(position))
 	
-	print("rateX: ", rateX)
-	print("rateY: ", rateY)
-	
-	if rateX < 0 and rateY > 0:
-		if rateX < rateY:
-			$AnimatedSprite.play("walk_left")
-		else: 
-			$AnimatedSprite.play("walk_up")
-	elif rateX > 0 and rateY > 0:
-		if rateX < rateY:
+	if angle >= 0 and angle <= 180:
+		if angle >= 0 and angle <= 55:
 			$AnimatedSprite.play("walk_right")
-		else: 
+		elif angle > 55 and angle <= 125:
 			$AnimatedSprite.play("walk_up")
-	elif rateX < 0 and rateY < 0:
-		if rateX < rateY:
+		elif angle > 125:
 			$AnimatedSprite.play("walk_left")
-		else: 
+	elif angle >= -180 and angle < 0:
+		if angle >= -180 and angle <= -125:
+			$AnimatedSprite.play("walk_left")
+		elif angle > -125 and angle <= -90:
 			$AnimatedSprite.play("walk_down")
-	else:
-		if rateX < rateY:
-			$AnimatedSprite.play("walk_left")
-		else: 
-			$AnimatedSprite.play("walk_up")
+		elif angle > -90 and angle <= -55:
+			$AnimatedSprite.play("walk_right")
