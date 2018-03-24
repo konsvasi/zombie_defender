@@ -25,19 +25,20 @@ func _ready():
 			global.Player.set_position($StartPosition.get_position())
 
 func _on_enemyTimer_timeout():
-	$EnemyPath/spawnLocation.set_offset(randi())
-	var enemy = enemies.instance()
-	
-	add_child(enemy)
-	enemy.get_node("AnimatedSprite").play("walk_down")
-	
-	enemyCount += 1
-	if enemyCount == 1:
-		$enemyTimer.stop()
-		
-	
-	enemy.position = $EnemyPath/spawnLocation.position
-	enemy.move_and_slide(Vector2(2,1))
+	pass
+#	$EnemyPath/spawnLocation.set_offset(randi())
+#	var enemy = enemies.instance()
+#
+#	add_child(enemy)
+#	enemy.get_node("AnimatedSprite").play("walk_down")
+#
+#	enemyCount += 1
+#	if enemyCount == 1:
+#		$enemyTimer.stop()
+#
+#
+#	enemy.position = $EnemyPath/spawnLocation.position
+#	enemy.move_and_slide(Vector2(2,1))
 	
 func newGame():
 	health = $Player.health

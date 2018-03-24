@@ -7,9 +7,11 @@ const LEFT = Vector2(-1, 0)
 const RIGHT = Vector2(1, 0)
 const PARTICLE_SCENE = preload("res://Scenes/Particle.tscn")
 
+onready var world = get_world_2d().get_direct_space_state()
 var health = 50
 var maxHealth = 50
 var currentScene
+var faceDirection = "down"
 onready var shootTimer = $ShootTimer
 signal hitEnemy
 signal gameOver
@@ -29,28 +31,35 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_left") and Input.is_action_pressed("ui_down"):
 		motion += LEFT
 		$Sprite.play("walk_left")
+		faceDirection = "left"
 	elif Input.is_action_pressed("ui_left") and Input.is_action_pressed("ui_up"):
 		motion += LEFT
 		$Sprite.play("walk_left")
+		faceDirection = "left"
 	elif Input.is_action_pressed("ui_left"):
 		motion += LEFT
 		$Sprite.play("walk_left")
+		faceDirection = "left"
 	
 	if Input.is_action_pressed("ui_right") and Input.is_action_pressed("ui_down"):
 		motion += RIGHT
 		$Sprite.play("walk_right")
+		faceDirection = "right"
 	elif Input.is_action_pressed("ui_right") and Input.is_action_pressed("ui_up"):
 		motion += RIGHT
 		$Sprite.play("walk_right")
+		faceDirection = "right"
 	elif Input.is_action_pressed("ui_right"):
 		motion += RIGHT
 		$Sprite.play("walk_right")
+		faceDirection = "right"
 	
 	var animation = $Sprite.get_animation()
 	if Input.is_action_pressed("ui_up"):
 		motion += UP
 		if motion.x == 0:
 			$Sprite.play("walk_up")
+			faceDirection = "up"
 		else:
 			$Sprite.play(animation)
 
@@ -58,11 +67,12 @@ func _physics_process(delta):
 		motion += DOWN
 		if motion.x == 0:
 			$Sprite.play("walk_down")
+			faceDirection = "down"
 		else:
 			$Sprite.play(animation)
 	
 	if Input.is_action_pressed("interact"):
-		print("Interact")
+		getIntersection(faceDirection)
 
 
 	if Input.is_action_pressed("shoot"):
@@ -108,3 +118,35 @@ func resetPlayerStats():
 # Resets position of the player after a game over
 func resetPosition(startPosition):
 	set_global_position(startPosition)
+
+# Gets intersection point by using the players direction
+# Result is given to interact function to check
+# if there is anything in the result that player can interact with	
+func getIntersection(faceDirection):
+	var result
+	if faceDirection == "left":
+		result = world.intersect_point(position + Vector2(-16, 0))
+	elif faceDirection == "right":
+		result = world.intersect_point(position + Vector2(16, 0))
+	elif faceDirection == "down":
+		result = world.intersect_point(position + Vector2(0, 16))
+	elif faceDirection == "up":
+		result = world.intersect_point(position + Vector2(0, -16))
+	
+	interact(result)
+
+# Checks if player faces an object that can be interacted with
+func interact(interSectionPoint):
+	var checked = false
+	for dict in interSectionPoint:
+		if !checked:
+			if typeof(dict.collider) == TYPE_OBJECT and dict.collider.has_node("Interact"):
+				#get parent of collider
+				var box = dict.collider.get_parent()
+				
+				$ExclamationMark.hide()
+				box.get_node("AnimatedSprite").play("open")
+				print("Got: ", box.item)
+				checked = true
+	
+	

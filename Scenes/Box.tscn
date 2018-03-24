@@ -10,7 +10,7 @@
 
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
-"loop": true,
+"loop": false,
 "name": "open",
 "speed": 5.0
 } ]
@@ -25,9 +25,10 @@ extents = Vector2( 12.1791, 16.8511 )
 custom_solver_bias = 0.0
 extents = Vector2( 23.5028, 24.616 )
 
-[node name="Box" type="Node2D" index="0"]
+[node name="Box" type="Node2D"]
 
 script = ExtResource( 1 )
+item = ""
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
 
@@ -44,15 +45,15 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
+[node name="Interact" type="Node2D" parent="StaticBody2D" index="0"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="1"]
 
 visible = false
 position = Vector2( -0.647079, 3.23536 )
 shape = SubResource( 2 )
 
-[node name="Interact" type="Node2D" parent="." index="2"]
-
-[node name="Area2D" type="Area2D" parent="." index="3"]
+[node name="Area2D" type="Area2D" parent="." index="2"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
