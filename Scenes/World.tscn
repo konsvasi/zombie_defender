@@ -127,6 +127,7 @@ position = Vector2( 402.38, 174.944 )
 
 position = Vector2( 384, 64 )
 item = "Super boots"
+looted = false
 
 [connection signal="gameOver" from="Player" to="." method="_on_Player_gameOver"]
 

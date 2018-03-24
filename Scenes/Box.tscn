@@ -29,6 +29,7 @@ extents = Vector2( 23.5028, 24.616 )
 
 script = ExtResource( 1 )
 item = ""
+looted = false
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
 

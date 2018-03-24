@@ -137,16 +137,15 @@ func getIntersection(faceDirection):
 
 # Checks if player faces an object that can be interacted with
 func interact(interSectionPoint):
-	var checked = false
 	for dict in interSectionPoint:
-		if !checked:
-			if typeof(dict.collider) == TYPE_OBJECT and dict.collider.has_node("Interact"):
-				#get parent of collider
-				var box = dict.collider.get_parent()
-				
-				$ExclamationMark.hide()
+		if typeof(dict.collider) == TYPE_OBJECT and dict.collider.has_node("Interact"):
+			#get parent of collider
+			var box = dict.collider.get_parent()
+			
+			$ExclamationMark.hide()
+			if !box.looted:
 				box.get_node("AnimatedSprite").play("open")
 				print("Got: ", box.item)
-				checked = true
+				box.looted = true
 	
 	

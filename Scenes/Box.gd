@@ -1,6 +1,7 @@
 extends Node2D
 
 export var item = ""
+export var looted = false
 
 func _on_Area2D_body_entered(body):
 	if body.get_name() == "Player":
