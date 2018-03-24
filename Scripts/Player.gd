@@ -145,6 +145,10 @@ func interact(interSectionPoint):
 			$ExclamationMark.hide()
 			if !box.looted:
 				box.get_node("AnimatedSprite").play("open")
+				#Show dialog
+				var dialogBox = global.UI.get_node("DialogBox")
+				dialogBox.get_node("RichTextLabel").set_bbcode(box.itemText)
+				dialogBox.show()
 				print("Got: ", box.item)
 				box.looted = true
 	

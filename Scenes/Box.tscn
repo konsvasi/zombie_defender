@@ -1,10 +1,11 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Scenes/Box.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Box.gd" type="Script" id=1]
 [ext_resource path="res://Tilesets/item_animations/box_open_1.png" type="Texture" id=2]
 [ext_resource path="res://Tilesets/item_animations/box_open_2.png" type="Texture" id=3]
 [ext_resource path="res://Tilesets/item_animations/box_open_3.png" type="Texture" id=4]
 [ext_resource path="res://Tilesets/item_animations/box_open_4.png" type="Texture" id=5]
+
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -25,10 +26,11 @@ extents = Vector2( 12.1791, 16.8511 )
 custom_solver_bias = 0.0
 extents = Vector2( 23.5028, 24.616 )
 
-[node name="Box" type="Node2D"]
+[node name="Box" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 item = ""
+itemText = ""
 looted = false
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
