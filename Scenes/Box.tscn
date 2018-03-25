@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Scenes/Box.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Box.gd" type="Script" id=1]
 [ext_resource path="res://Tilesets/item_animations/box_open_1.png" type="Texture" id=2]
 [ext_resource path="res://Tilesets/item_animations/box_open_2.png" type="Texture" id=3]
 [ext_resource path="res://Tilesets/item_animations/box_open_3.png" type="Texture" id=4]
@@ -29,6 +29,7 @@ extents = Vector2( 23.5028, 24.616 )
 
 script = ExtResource( 1 )
 item = ""
+itemText = ""
 looted = false
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]

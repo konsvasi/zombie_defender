@@ -13,6 +13,7 @@ var maxHealth = 50
 var currentScene
 var faceDirection = "down"
 onready var shootTimer = $ShootTimer
+onready var state = global.state
 signal hitEnemy
 signal gameOver
 
@@ -27,64 +28,65 @@ func _ready():
 
 func _physics_process(delta):
 	var motion = Vector2()
+	
+	if global.state == "walking":
+		if Input.is_action_pressed("ui_left") and Input.is_action_pressed("ui_down"):
+			motion += LEFT
+			$Sprite.play("walk_left")
+			faceDirection = "left"
+		elif Input.is_action_pressed("ui_left") and Input.is_action_pressed("ui_up"):
+			motion += LEFT
+			$Sprite.play("walk_left")
+			faceDirection = "left"
+		elif Input.is_action_pressed("ui_left"):
+			motion += LEFT
+			$Sprite.play("walk_left")
+			faceDirection = "left"
 		
-	if Input.is_action_pressed("ui_left") and Input.is_action_pressed("ui_down"):
-		motion += LEFT
-		$Sprite.play("walk_left")
-		faceDirection = "left"
-	elif Input.is_action_pressed("ui_left") and Input.is_action_pressed("ui_up"):
-		motion += LEFT
-		$Sprite.play("walk_left")
-		faceDirection = "left"
-	elif Input.is_action_pressed("ui_left"):
-		motion += LEFT
-		$Sprite.play("walk_left")
-		faceDirection = "left"
+		if Input.is_action_pressed("ui_right") and Input.is_action_pressed("ui_down"):
+			motion += RIGHT
+			$Sprite.play("walk_right")
+			faceDirection = "right"
+		elif Input.is_action_pressed("ui_right") and Input.is_action_pressed("ui_up"):
+			motion += RIGHT
+			$Sprite.play("walk_right")
+			faceDirection = "right"
+		elif Input.is_action_pressed("ui_right"):
+			motion += RIGHT
+			$Sprite.play("walk_right")
+			faceDirection = "right"
+		
+		var animation = $Sprite.get_animation()
+		if Input.is_action_pressed("ui_up"):
+			motion += UP
+			if motion.x == 0:
+				$Sprite.play("walk_up")
+				faceDirection = "up"
+			else:
+				$Sprite.play(animation)
 	
-	if Input.is_action_pressed("ui_right") and Input.is_action_pressed("ui_down"):
-		motion += RIGHT
-		$Sprite.play("walk_right")
-		faceDirection = "right"
-	elif Input.is_action_pressed("ui_right") and Input.is_action_pressed("ui_up"):
-		motion += RIGHT
-		$Sprite.play("walk_right")
-		faceDirection = "right"
-	elif Input.is_action_pressed("ui_right"):
-		motion += RIGHT
-		$Sprite.play("walk_right")
-		faceDirection = "right"
+		if Input.is_action_pressed("ui_down"):
+			motion += DOWN
+			if motion.x == 0:
+				$Sprite.play("walk_down")
+				faceDirection = "down"
+			else:
+				$Sprite.play(animation)
+		
+		if Input.is_action_pressed("interact"):
+			getIntersection(faceDirection)
 	
-	var animation = $Sprite.get_animation()
-	if Input.is_action_pressed("ui_up"):
-		motion += UP
-		if motion.x == 0:
-			$Sprite.play("walk_up")
-			faceDirection = "up"
+	
+		if Input.is_action_pressed("shoot"):
+			shoot(motion)
+		
+		if motion.length() > 0:
+			motion = motion.normalized() * SPEED
 		else:
-			$Sprite.play(animation)
-
-	if Input.is_action_pressed("ui_down"):
-		motion += DOWN
-		if motion.x == 0:
-			$Sprite.play("walk_down")
-			faceDirection = "down"
-		else:
-			$Sprite.play(animation)
+			$Sprite.stop()
+			$Sprite.set_frame(2)
 	
-	if Input.is_action_pressed("interact"):
-		getIntersection(faceDirection)
-
-
-	if Input.is_action_pressed("shoot"):
-		shoot(motion)
-	
-	if motion.length() > 0:
-		motion = motion.normalized() * SPEED
-	else:
-		$Sprite.stop()
-		$Sprite.set_frame(2)
-
-	move_and_slide(motion)
+		move_and_slide(motion)
 
 func shoot(motion):
 	var position = $Gun/Position2D.get_position()
@@ -145,6 +147,11 @@ func interact(interSectionPoint):
 			$ExclamationMark.hide()
 			if !box.looted:
 				box.get_node("AnimatedSprite").play("open")
+				#Show dialog
+				var dialogBox = global.UI.get_node("DialogBox")
+				global.state = "dialog"
+				dialogBox.get_node("RichTextLabel").set_bbcode(box.itemText)
+				dialogBox.show()
 				print("Got: ", box.item)
 				box.looted = true
 	
