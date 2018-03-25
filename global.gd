@@ -9,11 +9,13 @@ var score = 0
 var UI
 var Player
 var isNewGame = true
+var state
 
 func _ready():
 	var root = get_tree().get_root()
 	current_scene = root.get_child( root.get_child_count() -1 )
 	print(current_scene)
+	state = "walking"
 	
 func goto_scene(path):
 	call_deferred("_deferred_goto_scene", path)
