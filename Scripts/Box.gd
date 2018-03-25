@@ -1,8 +1,9 @@
 extends Node2D
 
 export var item = ""
-export var itemText = ""
+export(String, MULTILINE) var itemText
 export var looted = false
+export var itemArray = Array()
 
 func _on_Area2D_body_entered(body):
 	if body.get_name() == "Player":

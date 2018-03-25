@@ -29,8 +29,9 @@ extents = Vector2( 23.5028, 24.616 )
 
 script = ExtResource( 1 )
 item = ""
-itemText = ""
+itemText = null
 looted = false
+itemArray = [ "Hyper boots", "DASH_EQUIPMENT", 50 ]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
 

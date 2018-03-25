@@ -5,14 +5,14 @@
 [ext_resource path="res://Tilesets/walk_up_1.png" type="Texture" id=3]
 [ext_resource path="res://Tilesets/walk_up_2.png" type="Texture" id=4]
 [ext_resource path="res://Tilesets/walk_up_3.png" type="Texture" id=5]
-[ext_resource path="res://Tilesets/walk_right_1.png" type="Texture" id=6]
-[ext_resource path="res://Tilesets/walk_right_2.png" type="Texture" id=7]
-[ext_resource path="res://Tilesets/walk_right_3.png" type="Texture" id=8]
+[ext_resource path="res://Tilesets/walk_left_1.png" type="Texture" id=6]
+[ext_resource path="res://Tilesets/walk_left_2.png" type="Texture" id=7]
+[ext_resource path="res://Tilesets/walk_left_3.png" type="Texture" id=8]
 [ext_resource path="res://Tilesets/walk_down_2.png" type="Texture" id=9]
 [ext_resource path="res://Tilesets/walk_down_3.png" type="Texture" id=10]
-[ext_resource path="res://Tilesets/walk_left_1.png" type="Texture" id=11]
-[ext_resource path="res://Tilesets/walk_left_2.png" type="Texture" id=12]
-[ext_resource path="res://Tilesets/walk_left_3.png" type="Texture" id=13]
+[ext_resource path="res://Tilesets/walk_right_1.png" type="Texture" id=11]
+[ext_resource path="res://Tilesets/walk_right_2.png" type="Texture" id=12]
+[ext_resource path="res://Tilesets/walk_right_3.png" type="Texture" id=13]
 [ext_resource path="res://icon.png" type="Texture" id=14]
 [ext_resource path="res://Tilesets/exclamation_mark/exclamation_mark_1.png" type="Texture" id=15]
 [ext_resource path="res://Tilesets/exclamation_mark/exclamation_mark_2.png" type="Texture" id=16]
@@ -34,7 +34,7 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 8 ) ],
 "loop": true,
-"name": "walk_right",
+"name": "walk_left",
 "speed": 10.0
 }, {
 "frames": [ ExtResource( 2 ), ExtResource( 9 ), ExtResource( 2 ), ExtResource( 10 ) ],
@@ -44,7 +44,7 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 13 ) ],
 "loop": true,
-"name": "walk_left",
+"name": "walk_right",
 "speed": 10.0
 } ]
 _sections_unfolded = [ "Resource" ]

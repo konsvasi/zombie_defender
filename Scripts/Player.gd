@@ -12,10 +12,16 @@ var health = 50
 var maxHealth = 50
 var currentScene
 var faceDirection = "down"
+var dashSpeed = 1
+var dashTimer = Timer.new()
 onready var shootTimer = $ShootTimer
 onready var state = global.state
 signal hitEnemy
 signal gameOver
+var equipment = {
+	"weapon": "",
+	"boots": ""
+}
 
 
 func _process(delta):
@@ -72,6 +78,15 @@ func _physics_process(delta):
 				faceDirection = "down"
 			else:
 				$Sprite.play(animation)
+				
+		if Input.is_action_pressed("dash"):
+			#check if player has equipment that enables dash
+			if typeof(equipment.boots) == TYPE_ARRAY and equipment.boots[1] == "DASH_EQUIPMENT":
+				if dashTimer.is_stopped():
+					dashSpeed = equipment.boots[2]
+					createDashTimer(dashSpeed)
+				else:
+					dashSpeed = 1
 		
 		if Input.is_action_pressed("interact"):
 			getIntersection(faceDirection)
@@ -81,7 +96,7 @@ func _physics_process(delta):
 			shoot(motion)
 		
 		if motion.length() > 0:
-			motion = motion.normalized() * SPEED
+			motion = motion.normalized() * SPEED * dashSpeed
 		else:
 			$Sprite.stop()
 			$Sprite.set_frame(2)
@@ -99,11 +114,7 @@ func createParticle(motion):
 		get_parent().add_child(particle)
 		particle.set_position($Gun/Position2D.get_global_position())
 		
-		restartTimer()
-
-func restartTimer():
-	$ShootTimer.set_wait_time(0.5)
-	$ShootTimer.start()
+		restartTimer(shootTimer, 0.5)
 
 func _on_ShootTimer_timeout():
 	shootTimer.stop()
@@ -152,7 +163,23 @@ func interact(interSectionPoint):
 				global.state = "dialog"
 				dialogBox.get_node("RichTextLabel").set_bbcode(box.itemText)
 				dialogBox.show()
-				print("Got: ", box.item)
+				equipment.boots = box.itemArray
+				print("Got: ", box.item, " equipment: ", equipment)
 				box.looted = true
+
+func createDashTimer(dashSpeed):
+	dashTimer.connect("timeout", self, "_on_dashTimer_timeout")
+	dashTimer.wait_time = 3
+	add_child(dashTimer)
+	dashTimer.start()
+	restartTimer(dashTimer, 2)
+
+# Sets the dashSpeed back to normal	
+func _on_dashTimer_timeout():
+	dashTimer.stop()
+	dashTimer.disconnect("timeout", self, "_on_dashTimer_timeout")
+	remove_child(dashTimer)
 	
-	
+func restartTimer(timer, waitTime):
+	timer.set_wait_time(waitTime)
+	timer.start()

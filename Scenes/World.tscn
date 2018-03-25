@@ -161,10 +161,11 @@ position = Vector2( 402.38, 174.944 )
 
 position = Vector2( 384, 64 )
 item = "Hyper boots"
-itemText = "You got a pair of Hyper boots."
+itemText = "You got Hyper boots. Now you can dash by pressing C."
 
 [node name="worldboundaries" type="StaticBody2D" parent="." index="10"]
 
+editor/display_folded = true
 visible = false
 input_pickable = false
 collision_layer = 1
