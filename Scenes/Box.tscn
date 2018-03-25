@@ -6,7 +6,6 @@
 [ext_resource path="res://Tilesets/item_animations/box_open_3.png" type="Texture" id=4]
 [ext_resource path="res://Tilesets/item_animations/box_open_4.png" type="Texture" id=5]
 
-
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
@@ -26,7 +25,7 @@ extents = Vector2( 12.1791, 16.8511 )
 custom_solver_bias = 0.0
 extents = Vector2( 23.5028, 24.616 )
 
-[node name="Box" type="Node2D" index="0"]
+[node name="Box" type="Node2D"]
 
 script = ExtResource( 1 )
 item = ""

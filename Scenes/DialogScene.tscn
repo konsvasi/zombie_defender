@@ -1,9 +1,41 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Fonts/orange kid.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/RichTextLabel.gd" type="Script" id=2]
 
 [sub_resource type="DynamicFont" id=1]
+
+size = 78
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 1 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=2]
+
+size = 48
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 1 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=3]
+
+size = 48
+use_mipmaps = true
+use_filter = false
+font_data = ExtResource( 1 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=4]
+
+size = 52
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 1 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=5]
 
 size = 48
 use_mipmaps = false
@@ -13,6 +45,7 @@ _sections_unfolded = [ "Font", "Settings" ]
 
 [node name="DialogBox" type="Polygon2D"]
 
+position = Vector2( 32, 0 )
 polygon = PoolVector2Array( 0, 352, 928, 352, 928, 576, 0, 576 )
 uv = PoolVector2Array(  )
 color = Color( 0.179688, 0.179688, 0.179688, 1 )
@@ -25,8 +58,29 @@ texture_scale = Vector2( 1, 1 )
 texture_rotation_degrees = 0.0
 invert_enable = false
 invert_border = 100.0
+_sections_unfolded = [ "Texture" ]
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="RichTextLabel" type="RichTextLabel" parent="." index="0"]
+[node name="BackGround" type="Polygon2D" parent="." index="0"]
+
+self_modulate = Color( 1, 1, 1, 0.831373 )
+polygon = PoolVector2Array( 32, 384, 896, 384, 896, 544, 32, 544 )
+uv = PoolVector2Array(  )
+color = Color( 1, 0.949219, 0.949219, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Visibility" ]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -43,6 +97,11 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 custom_fonts/mono_font = SubResource( 1 )
+custom_fonts/bold_italics_font = SubResource( 2 )
+custom_fonts/italics_font = SubResource( 3 )
+custom_fonts/bold_font = SubResource( 4 )
+custom_fonts/normal_font = SubResource( 5 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
 bbcode_text = "This is a test"
 visible_characters = -1
@@ -55,9 +114,9 @@ scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
 script = ExtResource( 2 )
-_sections_unfolded = [ "BBCode", "custom_fonts" ]
+_sections_unfolded = [ "BBCode", "custom_colors", "custom_fonts" ]
 
-[node name="Timer" type="Timer" parent="." index="1"]
+[node name="Timer" type="Timer" parent="." index="2"]
 
 process_mode = 1
 wait_time = 0.04
