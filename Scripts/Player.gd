@@ -95,11 +95,6 @@ func _physics_process(delta):
 		
 		if Input.is_action_pressed("interact"):
 			getIntersection(faceDirection)
-		
-		if Input.is_action_just_pressed("ui_accept"):
-			global.state = "menuInput"
-			global.UI.toggleMenu()
-	
 	
 		if Input.is_action_pressed("shoot"):
 			shoot(motion)
@@ -157,6 +152,11 @@ func getIntersection(faceDirection):
 	
 	interact(result)
 
+func _input(event):
+	if Input.is_action_just_pressed("ui_accept"):
+			global.state = "menuInput"
+			global.UI.toggleMenu()
+			
 # Checks if player faces an object that can be interacted with
 func interact(interSectionPoint):
 	for dict in interSectionPoint:

@@ -32,10 +32,11 @@ func _on_Player_hitEnemy():
 	
 func toggleMenu():
 	var worldTree = global.World.get_tree()
-
+	print("Menu visible: ", $Menu.visible)
 	if $Menu.visible:
 		print("Visible")
 		$Menu.hide()
+		global.state = "walking"
 		worldTree.paused = false
 	elif !$Menu.visible:
 		$Menu.initMenu()
