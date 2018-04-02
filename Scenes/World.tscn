@@ -20,7 +20,7 @@ _data = {
 custom_solver_bias = 0.0
 extents = Vector2( 706.854, 14.3958 )
 
-[node name="World" type="Node2D" index="0"]
+[node name="World" type="Node2D"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]

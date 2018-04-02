@@ -1,0 +1,89 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Menu.gd" type="Script" id=1]
+[ext_resource path="res://Images/arrowHand.png" type="Texture" id=2]
+[ext_resource path="res://Fonts/orange kid.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+
+size = 32
+use_mipmaps = false
+use_filter = true
+font_data = ExtResource( 3 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[node name="Menu" type="Polygon2D" index="0"]
+
+pause_mode = 2
+polygon = PoolVector2Array( 0, 0, 254.844, -1.52576, 253.736, 415.096, 0, 416 )
+uv = PoolVector2Array(  )
+color = Color( 0.152344, 0.152344, 0.152344, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+script = ExtResource( 1 )
+_sections_unfolded = [ "Pause", "Visibility" ]
+
+[node name="Pointer" type="Sprite" parent="." index="0"]
+
+position = Vector2( 39.1775, 61.9713 )
+scale = Vector2( 2.01852, 1.86021 )
+texture = ExtResource( 2 )
+
+[node name="Options" type="Node2D" parent="." index="1"]
+
+position = Vector2( 95.7638, 71.209 )
+
+[node name="Items" type="Label" parent="Options" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -33.7638
+margin_top = -40.101
+margin_right = 286.236
+margin_bottom = 23.899
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+text = "Items"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Close" type="Label" parent="Options" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -33.7638
+margin_top = 22.899
+margin_right = 34.2362
+margin_bottom = 86.899
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+text = "Close"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+

@@ -29,6 +29,21 @@ func toggleScoreAndHealthLabels(show):
 
 func _on_Player_hitEnemy():
 	updateScore(global.score)
+	
+func showMenu():
+	global.World.get_tree().paused = true
+	$Menu.show()
+
+func toggleMenu():
+	var worldTree = global.World.get_tree()
+	print("Visible: ", $Menu.visible)
+	if $Menu.visible:
+		$Menu.hide()
+		worldTree.paused = false
+	elif !$Menu.visible:
+		$Menu.show()
+		worldTree.paused = true
+		
 
 func setupHealthbar():
 	$Healthbar.max_value = global.Player.maxHealth

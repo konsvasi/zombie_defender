@@ -90,6 +90,9 @@ func _physics_process(delta):
 		
 		if Input.is_action_pressed("interact"):
 			getIntersection(faceDirection)
+		
+		if Input.is_action_just_pressed("ui_accept"):
+			global.UI.toggleMenu()
 	
 	
 		if Input.is_action_pressed("shoot"):

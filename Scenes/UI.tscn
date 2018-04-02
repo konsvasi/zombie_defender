@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/UI.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/orange kid.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Images/health_bar_under.png" type="Texture" id=3]
 [ext_resource path="res://Images/blood_drop.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/DialogScene.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Menu.tscn" type="PackedScene" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -177,5 +178,10 @@ _sections_unfolded = [ "custom_fonts" ]
 [node name="DialogBox" parent="." index="3" instance=ExtResource( 5 )]
 
 visible = false
+
+[node name="Menu" parent="." index="4" instance=ExtResource( 6 )]
+
+visible = false
+position = Vector2( 770.088, 2.21606 )
 
 

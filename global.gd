@@ -6,6 +6,7 @@ var current_scene = null
 var previous_scene = null
 var health = 10
 var score = 0
+var World
 var UI
 var Player
 var isNewGame = true

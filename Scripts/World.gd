@@ -12,6 +12,7 @@ var isNewGame = true
 func _ready():
 	randomize()
 	tree.paused = false
+	global.World = self
 	
 	if global.isNewGame:
 		newGame()
