@@ -40,16 +40,32 @@ texture = ExtResource( 2 )
 
 position = Vector2( 95.7638, 71.209 )
 
-[node name="Items" type="Label" parent="Options" index="0"]
+[node name="OptionsContainer" type="VBoxContainer" parent="Options" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -33.7638
-margin_top = -40.101
-margin_right = 286.236
-margin_bottom = 23.899
+margin_left = -32.0
+margin_top = -38.0
+margin_right = 8.0
+margin_bottom = 2.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="Items" type="Label" parent="Options/OptionsContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 58.0
+margin_bottom = 40.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -63,16 +79,15 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="Close" type="Label" parent="Options" index="1"]
+[node name="Close" type="Label" parent="Options/OptionsContainer" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -33.7638
-margin_top = 22.899
-margin_right = 34.2362
-margin_bottom = 86.899
+margin_top = 44.0
+margin_right = 58.0
+margin_bottom = 84.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -88,7 +103,7 @@ _sections_unfolded = [ "custom_fonts" ]
 
 [node name="Inventory" type="Node2D" parent="." index="2"]
 
-position = Vector2( 96.04, 70.3063 )
+position = Vector2( 96.04, 71.1007 )
 
 [node name="ItemContainer" type="VBoxContainer" parent="Inventory" index="0"]
 

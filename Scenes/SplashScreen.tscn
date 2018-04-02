@@ -31,7 +31,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 0.392157 ), Color( 1, 1, 1, 0.588235 ), Color( 1, 1, 1, 0.784314 ), Color( 1, 1, 1, 1 ), Color( 1, 0.90332, 0.613281, 1 ) ]
 }
 
-[node name="SplashScreen" type="Node2D"]
+[node name="SplashScreen" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 nextScene = "res://Scenes/TitleScreen.tscn"

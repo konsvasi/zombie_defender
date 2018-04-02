@@ -25,7 +25,9 @@ var equipment = {
 
 #var inventory = ["Potion", "Painkiller", "Potion"]
 # Inventory is an array that contains item objects
-var inventory = [{"name": "Potion", "count": 2}, {"name": "Hi-potion", "count": 1}]
+var inventory = [{"name": "Potion", "count": 2}, 
+				{"name": "Hi-potion", "count": 1},
+				{"name": "Gum", "count": 2}]
 
 func _process(delta):
 	if global.health <= 0:
@@ -95,6 +97,7 @@ func _physics_process(delta):
 			getIntersection(faceDirection)
 		
 		if Input.is_action_just_pressed("ui_accept"):
+			global.state = "menuInput"
 			global.UI.toggleMenu()
 	
 	
