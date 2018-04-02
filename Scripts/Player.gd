@@ -23,6 +23,9 @@ var equipment = {
 	"boots": ""
 }
 
+#var inventory = ["Potion", "Painkiller", "Potion"]
+# Inventory is an array that contains item objects
+var inventory = [{"name": "Potion", "count": 2}, {"name": "Hi-potion", "count": 1}]
 
 func _process(delta):
 	if global.health <= 0:

@@ -36,7 +36,7 @@ func showMenu():
 
 func toggleMenu():
 	var worldTree = global.World.get_tree()
-	print("Visible: ", $Menu.visible)
+
 	if $Menu.visible:
 		$Menu.hide()
 		worldTree.paused = false
