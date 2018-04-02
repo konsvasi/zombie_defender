@@ -152,11 +152,6 @@ func getIntersection(faceDirection):
 	
 	interact(result)
 
-func _input(event):
-	if Input.is_action_just_pressed("ui_accept"):
-			global.state = "menuInput"
-			global.UI.toggleMenu()
-			
 # Checks if player faces an object that can be interacted with
 func interact(interSectionPoint):
 	for dict in interSectionPoint:

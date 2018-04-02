@@ -7,12 +7,12 @@ var currentMenu = "mainMenu"
 var options
 var items
 var pointer
-var justOpened
 var currentArray
+var justOpened = true
+var giveAccessToSubMenues = false
 
 func _ready():
 	set_process_input(true)
-	justOpened = true
 	options = $Options/OptionsContainer.get_children()
 	pointer = $Pointer
 	setInventoryOption()
@@ -22,48 +22,49 @@ func _ready():
 	
 
 func _input(event):
-	print("event: ", event)
-	if global.state == "menuInput":
-		if currentMenu == "mainMenu":
-			currentArray = options
-		elif currentMenu == "Inventory":
-			currentArray = items
+	if Input.is_action_just_pressed("ui_accept"):
+		if justOpened:
+			toggleMenu()
+		else:
+			giveAccessToSubMenues = true
 		
-		if Input.is_action_just_pressed("ui_down"):
-			currentOption += 1
+		if global.state == "menuInput":
+			var selectedOption = currentArray[currentOption].get_name()
+			print("SelectedOption: ", selectedOption)
+			if selectedOption == "Items" and giveAccessToSubMenues:
+				currentMenu = "Inventory"
+				$Options.hide()
+				$Inventory.show()
+				$Inventory/ItemContainer.show()
 			
-			if currentOption >= currentArray.size():
-				currentOption = 0
+			if selectedOption == "Close":
+				reset()
 		
-		if Input.is_action_just_pressed("ui_up"):
-			currentOption -= 1
-			
-			if currentOption < 0:
-				currentOption = currentArray.size() - 1
+		if global.state == "walking":
+			global.state == "menuInput"
 		
-		if Input.is_action_just_pressed("ui_accept"):
-			if !justOpened:
-				var selectedOption = currentArray[currentOption].get_name()
-				print("SelectedOption: ", selectedOption)
-				if selectedOption == "Items":
-					currentMenu = "Inventory"
-					$Options.hide()
-					$Inventory.show()
-					$Inventory/ItemContainer.show()
+		
+	if currentMenu == "mainMenu":
+		currentArray = options
+	elif currentMenu == "Inventory":
+		currentArray = items
+	
+	if Input.is_action_just_pressed("ui_down"):
+		currentOption += 1
+		
+		if currentOption >= currentArray.size():
+			currentOption = 0
+	
+	if Input.is_action_just_pressed("ui_up"):
+		currentOption -= 1
+		
+		if currentOption < 0:
+			currentOption = currentArray.size() - 1
 				
-				if selectedOption == "Close":
-					selectedOption = "Items"
-					global.state = "walking"
-					self.hide()
-					global.World.get_tree().paused = false
-			
-			if justOpened:
-				justOpened = false
-			
-		if global.state == "menuInput" && Input.is_action_pressed("ui_cancel"):
-			reset()
-		
-		updatePointer()
+	if global.state == "menuInput" && Input.is_action_pressed("ui_cancel"):
+		reset()
+	
+	updatePointer()
 		
 # Updates the position of the pointer
 func updatePointer():
@@ -109,11 +110,26 @@ func reset():
 	currentOption = 0
 	$Options.visible = true
 	$Inventory.visible = false
-	global.UI.toggleMenu()
-	global.state = "walking"
+	giveAccessToSubMenues = false
+	toggleMenu()
 
 # Initializes the menu when opening it
 func initMenu():
 	$Options.visible = true
 	$Inventory.visible = false
 	currentMenu = "mainMenu"
+	#global.state = "menuInput"
+	
+func toggleMenu():
+	var worldTree = global.World.get_tree()
+	if visible:
+		self.hide()
+		justOpened = true
+		worldTree.paused = false
+		global.state = "walking"
+	else:
+		worldTree.paused = true
+		global.state = "menuInput"
+		self.show()
+		justOpened = false
+		$Inventory.hide()

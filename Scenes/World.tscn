@@ -144,7 +144,9 @@ autostart = false
 
 [node name="UI" parent="." index="6" instance=ExtResource( 6 )]
 
+pause_mode = 2
 editor/display_folded = true
+_sections_unfolded = [ "Pause" ]
 
 [node name="ScoreTimer" type="Timer" parent="." index="7"]
 

@@ -30,19 +30,16 @@ func toggleScoreAndHealthLabels(show):
 func _on_Player_hitEnemy():
 	updateScore(global.score)
 	
-func toggleMenu():
-	var worldTree = global.World.get_tree()
-	print("Menu visible: ", $Menu.visible)
-	if $Menu.visible:
-		print("Visible")
-		$Menu.hide()
-		global.state = "walking"
-		worldTree.paused = false
-	elif !$Menu.visible:
-		$Menu.initMenu()
-		$Menu.show()
-		worldTree.paused = true
-		
+#func toggleMenu():
+#	var worldTree = global.World.get_tree()
+#	print("Menu visible: ", $Menu.visible)
+#	if $Menu.visible:
+#		$Menu.hide()
+#		worldTree.paused = false
+#	elif !$Menu.visible:
+#		worldTree.paused = true
+#		$Menu.initMenu()
+#		$Menu.show()
 
 func setupHealthbar():
 	$Healthbar.max_value = global.Player.maxHealth
